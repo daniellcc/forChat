@@ -1,0 +1,20 @@
+{
+  "name": "forchat",
+  "version": "1.0.0",
+  "description": "a rooms chat",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "Daniel C. Cardona",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.9.11",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  }
+}
