@@ -15,7 +15,6 @@ export class ChatService {
 
   sendMsg(msg: string): void {
     this.socket.emit('send message', msg);
-    msg = '';
   }
 
   getMsgs(): Observable<string> {

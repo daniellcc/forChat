@@ -30,6 +30,7 @@ export class AppComponent implements OnInit{
 
   sendMsg(msg: string): void {
     this.chatService.sendMsg(msg);
+    msg = '';
   }
 
   
