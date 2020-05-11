@@ -1,26 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { ChatService } from './services/chat.service';
+import { Subscribable, Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  messages: string[] = [];
-  message: string;
+export class AppComponent implements OnInit{
+  user: string;
+  messages = [];
+  sub: Subscription;
 
-  constructor(private chatService: ChatService) {}
- 
-  sendMsg(e: Event): void {
-    e.preventDefault();
-    this.chatService.sendMsg(this.message);
-    this.pushMsg();
-    this.message = ''; // clean field
+  constructor(private chatService: ChatService) { }
+
+  ngOnInit(): void {
+    this.sub = this.chatService.getMsgs().subscribe(
+      data => this.messages.push(data),
+      (err: Error) => console.error(err),
+      () => console.log(this.sub)
+    );
   }
 
-  pushMsg(): void {
-    this.messages.push(this.message);
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
+
+  sendMsg(msg: string): void {
+    this.chatService.sendMsg(msg);
+  }
+
+  
 }
