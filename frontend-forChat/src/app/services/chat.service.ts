@@ -13,8 +13,11 @@ export class ChatService {
 
   constructor() {}
 
-  sendMsg(msg: string): void {
-    this.socket.emit('send message', msg);
+  sendMsg(msg: string, user: string): void {
+    this.socket.emit('send message', {
+      message: msg,
+      username: user
+    });
   }
 
   getMsgs(): Observable<string> {

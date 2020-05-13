@@ -1,0 +1,18 @@
+<div class="modal" tabindex="-1" role="dialog" aria-hidden="true" #modal>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form class="form-group">
+          <h4 class="text-center">Insert your username</h4>
+          <input class="form-control" type="text" placeholder="your username..." #name>
+        </form>
+      </div>
+      <div class="modal-footer p-0">
+        <button class="btn btn-primary btn-raised btn-block" type="button" data-dismiss="modal"
+                (click)="saveName(modal, name.value)">
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

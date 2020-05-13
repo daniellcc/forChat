@@ -1,0 +1,19 @@
+<div class="card bg-light position-fixed chat" style="width: 100vw; height: 100vh;">
+  <div class="card text-break py-1 px-2 my-1 mx-2" *ngFor="let msg of messages"
+    style="width: fit-content;max-width: 200px;">
+      <small *ngIf="username">{{ msg.username }}</small>
+      {{ msg.message }}
+  </div>
+
+  <form class="fixed-bottom m-0 bg-light">
+    <div class="row m-0 pl-3 pr-3">
+      <input class="form-control col-10" type="text" #text (keyup.enter)="sendMsg(text)">
+      <button class="btn btn-primary col-2 m-0" type="button" (click)="sendMsg(text)">
+        <span class="material-icons">
+          send
+        </span>
+      </button>
+    </div>
+  </form>
+</div>
+

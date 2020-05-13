@@ -1,23 +1,9 @@
-<div>
-  <input type="text" required [(ngModel)]="user" #name="ngModel">
-  <button type="button" class="btn bt-success">save</button>
-</div>
+<header>
+  <app-navbar class="fixed-top"></app-navbar>
+</header>
 
-<div class="card bg-light" style="width: 18rem; height: 20rem;">
-  <div *ngFor="let msg of messages" class="card text-break py-1 px-2 my-1 mx-2"
-    style="width: fit-content;max-width: 200px;">
-      {{ msg }}
-  </div>
-</div>
+<app-register (username)="saveUser($event)"></app-register>
 
-
-<div class="mt-5">
-  <div class="form-group">
-    <input type="text" #text>
-    <button class="btn btn-primary" type="button" 
-      (click)="sendMsg(text.value)">
-      send
-    </button>
-  </div>
-  
-</div>
+<main style="margin-top: 56px;">
+  <app-chat [username]="user"></app-chat>
+</main>
