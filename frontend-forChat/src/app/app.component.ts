@@ -1,16 +1,18 @@
 import { Component } from '@angular/core';
 
+import { User } from './models/user';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  user: string;
+  user: User;
 
   constructor() { }
 
-  saveUser(username: string) {
-    this.user = username;
+  saveUser(user: User) {
+    this.user = user;
   }
 }

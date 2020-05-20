@@ -6,15 +6,26 @@ const io = require('socket.io')(http);
 
 
 io.on('connection', socket => {
-	console.log('new connection');
 
-	socket.on('send message', msg => {
-		io.sockets.emit('message', msg)
+	io.sockets.emit('welcome message', 'welcome ');
+
+	socket.on('selected room', room => {
+		socket.join(room);
+
+		console.log(io.sockets.adapter.rooms);
+
+		socket.on('send message', msg => {
+			io.to(room).emit('message', msg);
+		});
+
+		socket.on('disconnect', username => {
+			console.log('user disconnected');
+			io.to(room).emit(`${username} has leave the chat`);
+		});
 	});
 
-  socket.on('disconnect', () => {
-    console.log('user disconnected');
-  });
+	
+  
 });
 
 app.use(express.static(__dirname + '/public'))

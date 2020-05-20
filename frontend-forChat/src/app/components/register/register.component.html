@@ -1,18 +1,32 @@
-<div class="modal" tabindex="-1" role="dialog" aria-hidden="true" #modal>
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-        <form class="form-group">
-          <h4 class="text-center">Insert your username</h4>
-          <input class="form-control" type="text" placeholder="your username..." #name>
-        </form>
+<div class="modal" #modal>
+  <div class="card">
+  <div class="card-body">
+    <form>
+      <h4 class="text-center">Start chatting!</h4>
+      
+      <div class="form-group">
+        <label for="name">Username</label>
+        <input class="form-control" type="text" id="name" placeholder="your username..." #name required>
       </div>
-      <div class="modal-footer p-0">
-        <button class="btn btn-primary btn-raised btn-block" type="button" data-dismiss="modal"
-                (click)="saveName(modal, name.value)">
-          Save
-        </button>
+      <div class="form-group">
+        <label for="select-room">Select a room</label>
+        <select class="form-control" name="select-room" id="select-room" #room required>
+          <option value="1">Room 1</option>
+          <option value="2">Room 2</option>
+          <option value="3">Room 3</option>
+          <option value="4">Room 4</option>
+        </select>
       </div>
-    </div>
+      
+    </form> 
+    <button class="btn btn-primary btn-raised btn-block" type="button"
+            (click)="save(name.value, room.value, modal)">
+      Save
+    </button>
   </div>
 </div>
+</div>
+
+
+
+        

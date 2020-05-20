@@ -2,8 +2,6 @@
   <app-navbar class="fixed-top"></app-navbar>
 </header>
 
-<app-register (username)="saveUser($event)"></app-register>
-
-<main style="margin-top: 56px;">
-  <app-chat [username]="user"></app-chat>
+<main>
+  <router-outlet></router-outlet>
 </main>
